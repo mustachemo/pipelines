@@ -877,4 +877,16 @@ describe('NewRunParametersV2', () => {
 
     expect(container.querySelector('input').type).toEqual('checkbox');
   });
+
+  it('displays correct Pipeline Root documentation link', () => {
+    const props = {
+      titleMessage: 'Specify parameters required by the pipeline',
+      specParameters: {},
+      clonedRuntimeConfig: {},
+    };
+    render(<NewRunParametersV2 {...props} />);
+
+    const link = screen.getByRole('link', { name: 'Pipeline Root Documentation' });
+    expect(link.getAttribute('href')).toBe('https://www.kubeflow.org/docs/components/pipelines/concepts/pipeline-root/');
+  });
 });
